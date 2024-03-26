@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "69b1dfa3-6289-4dd1-b6e4-d318ff0f7bd8",
+		"name": "Wireme - Sampath Bank Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13493066",
+		"_collection_link": "https://gold-capsule-135638.postman.co/workspace/My-Workspace~deec93db-4804-41ba-84ce-b06365e8a447/collection/13493066-69b1dfa3-6289-4dd1-b6e4-d318ff0f7bd8?action=share&source=collection_link&creator=13493066"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-code",
+								"value": "f62b2d4d-ad05-4513-8041-861eff04f5b0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"userName\":\"SuperAdmin\",\n    \"password\":\"00000000\"\n    // \"userName\":\"partnerUser\", // merhchantUser\n    // \"password\":\"Admin@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "192.168.129.237:443/wireme-service-admin/api/core/v1/auth/web",
+							"host": [
+								"192",
+								"168",
+								"129",
+								"237"
+							],
+							"port": "443",
+							"path": [
+								"wireme-service-admin",
+								"api",
+								"core",
+								"v1",
+								"auth",
+								"web"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-transaction-detailed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{jwt}}"
+							}
+						],
+						"url": {
+							"raw": "192.168.129.237:443/wireme-service-admin/api/core/v1/transactions/detailed?dateFrom=2021-04-22&page=1&pageSize=30&dateTo=2025-05-24",
+							"host": [
+								"192",
+								"168",
+								"129",
+								"237"
+							],
+							"port": "443",
+							"path": [
+								"wireme-service-admin",
+								"api",
+								"core",
+								"v1",
+								"transactions",
+								"detailed"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "2021-04-22"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "originId",
+									"value": "053868BB319609D9F903AF8B8340D419B644EC5E204E5E1541173A915041EAD3",
+									"disabled": true
+								},
+								{
+									"key": "deviceSerial",
+									"value": "888888234234859",
+									"disabled": true
+								},
+								{
+									"key": "isSettled",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "30"
+								},
+								{
+									"key": "dateTo",
+									"value": "2025-05-24"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Merchant",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-code",
+								"value": "f62b2d4d-ad05-4513-8041-861eff04f5b0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"userName\":\"SuperAdmin\",\n    \"password\":\"00000000\"\n    // \"userName\":\"partnerUser\", // merhchantUser\n    // \"password\":\"Admin@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "192.168.129.237:443/wireme-service-merchant/api/core/v1/auth/web",
+							"host": [
+								"192",
+								"168",
+								"129",
+								"237"
+							],
+							"port": "443",
+							"path": [
+								"wireme-service-merchant",
+								"api",
+								"core",
+								"v1",
+								"auth",
+								"web"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-transaction-detailed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{jwt}}"
+							}
+						],
+						"url": {
+							"raw": "192.168.129.237:443/wireme-service-merchant/api/core/v1/transactions/detailed?dateFrom=2021-04-22&page=1&pageSize=30&dateTo=2025-05-24",
+							"host": [
+								"192",
+								"168",
+								"129",
+								"237"
+							],
+							"port": "443",
+							"path": [
+								"wireme-service-merchant",
+								"api",
+								"core",
+								"v1",
+								"transactions",
+								"detailed"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "2021-04-22"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "originId",
+									"value": "053868BB319609D9F903AF8B8340D419B644EC5E204E5E1541173A915041EAD3",
+									"disabled": true
+								},
+								{
+									"key": "deviceSerial",
+									"value": "888888234234859",
+									"disabled": true
+								},
+								{
+									"key": "isSettled",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "30"
+								},
+								{
+									"key": "dateTo",
+									"value": "2025-05-24"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Device",
+			"item": [
+				{
+					"name": "terminal echo test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{jwt}}",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "192.168.129.237:443/wireme-service-pos/api/core/v1/terminals/echo-test?terminalId=11113333&merchantId=111112222233333&serialNo=1490751337",
+							"host": [
+								"192",
+								"168",
+								"129",
+								"237"
+							],
+							"port": "443",
+							"path": [
+								"wireme-service-pos",
+								"api",
+								"core",
+								"v1",
+								"terminals",
+								"echo-test"
+							],
+							"query": [
+								{
+									"key": "terminalId",
+									"value": "11113333"
+								},
+								{
+									"key": "merchantId",
+									"value": "111112222233333"
+								},
+								{
+									"key": "serialNo",
+									"value": "1490751337"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
